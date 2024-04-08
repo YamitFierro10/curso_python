@@ -1,4 +1,25 @@
 import store
+from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
+
+app= FastAPI()
+
+@app.get('/')
+def get_list():
+    return [1,2,3,4,5,8,9,10]
+
+@app.get('/contact')
+def get_lists():
+    return  {'name': 'platzi',
+             'apellido':'fierro',
+             'correo':'tabel07@gmail.com'}
+
+
+@app.get('/responses', response_class=HTMLResponse)
+def get_list():
+    return  """<h1> Hola Mundo</h1>
+               <p1>Parrafo grande </p1>   
+"""
 
 def run():
     store.get_categories()
